@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "https://github.com/pillepalle1 https://t.me/pillepalle1",
+  "classifications": [
+    "asp-dotnet",
+    "C#10",
+    "Telegram",
+    "TelegramBot",
+    "TelegramAuth",
+    "Async"
+  ],
+  "identity": "Pillepalle1.TelegramWebapp",
+  "name": "Webapp based on TelegramBot and TelegramAuth",
+  "shortName": "tgweb",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Pillepalle1.TelegramWebapp",
+  "preferNameDirectory": true
+}

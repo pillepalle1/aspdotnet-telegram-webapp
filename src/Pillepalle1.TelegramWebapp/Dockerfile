@@ -1,0 +1,30 @@
+###############################################################################
+# Stage 1: Publish the app
+
+# Use latest dotnet-sdk
+FROM mcr.microsoft.com/dotnet/nightly/sdk:5.0 AS publisher
+
+# All Container-PATHS are relative to WORKDIR  
+WORKDIR /src
+
+# Copy .csproj files and run dotnet restore to keep the restore separated in
+# in its own layer for future builds
+COPY Pillepalle1.TelegramWebapp.csproj webapp/
+RUN dotnet restore webapp/Pillepalle1.TelegramWebapp.csproj
+
+# After the restore is complete, copy the source files and publish the app
+COPY ./ webapp/
+RUN dotnet publish webapp/Pillepalle1.TelegramWebapp.csproj --configuration Release --output /app
+
+###############################################################################
+# Stage 2: Build an image containing the published app
+
+# Based on latest dotnet-runtime (required to run dotnet core apps)
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS runtime
+
+# Copy the published app from Stage 1 to the new image
+WORKDIR /webapp
+COPY --from=publisher /app/. .
+
+# Entrypoint describes how to launch the bot
+ENTRYPOINT [ "dotnet", "Pillepalle1.TelegramWebapp.dll" ]
