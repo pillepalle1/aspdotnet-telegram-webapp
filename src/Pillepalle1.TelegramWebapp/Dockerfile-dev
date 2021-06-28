@@ -14,7 +14,10 @@ RUN dotnet restore webapp/Pillepalle1.TelegramWebapp.csproj
 
 # After the restore is complete, copy the source files and publish the app
 COPY ./ webapp/
-RUN dotnet publish webapp/Pillepalle1.TelegramWebapp.csproj --configuration Release --output /app
+# RUN dotnet publish webapp/Pillepalle1.TelegramWebapp.csproj --configuration Release --output /app
+RUN dotnet publish webapp/Pillepalle1.TelegramWebapp.csproj --configuration Debug --output /app
+
+COPY docker-entrypoint.sh /app
 
 ###############################################################################
 # Stage 2: Build an image containing the published app
@@ -27,4 +30,4 @@ WORKDIR /webapp
 COPY --from=publisher /app/. .
 
 # Entrypoint describes how to launch the bot
-ENTRYPOINT [ "dotnet", "Pillepalle1.TelegramWebapp.dll" ]
+ENTRYPOINT [ "sh", "docker-entrypoint.sh" ]

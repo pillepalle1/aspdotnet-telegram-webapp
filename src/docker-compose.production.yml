@@ -1,0 +1,58 @@
+version: '2.0'
+
+services:
+    database:
+        build:
+            context: ./database/
+            dockerfile: ./Dockerfile
+        environment:
+            POSTGRES_PASSWORD: "${PGPASS}" 
+        networks:
+            - net
+        volumes:
+            - ./.vol/pqsql:/var/lib/postgresql/data
+
+    certbot:
+        build:
+            context: ./certbot/
+            dockerfile: ./Dockerfile
+        environment:
+            EMAIL: "${EMAIL}" 
+            FQDN: "${FQDN}" 
+        volumes:
+            - ./.vol/letsencrypt:/etc/letsencrypt
+        networks:
+            - net
+
+    tgwebapp:
+        build:
+            context: ./Pillepalle1.TelegramWebapp/
+            dockerfile: ./Dockerfile-prod
+        depends_on:
+            - database
+        environment:
+            FQDN: "${FQDN}" 
+            BOT_TOKEN: "${BOT_TOKEN}" 
+            BOT_NAME: "${BOT_NAME}"
+            DB_CONNECTION_STRING: "Host=database;Database=tgwebappdb;Username=postgres;Password=${PGPASS}"
+        networks:
+            - net
+
+    revproxy:
+        build:
+            context: ./revproxy/
+            dockerfile: ./Dockerfile
+        depends_on:
+            - tgwebapp
+            - certbot
+        ports:
+            - 80:80
+            - 443:443
+        networks:
+            - net
+        volumes:
+            - ./.vol/letsencrypt:/etc/letsencrypt
+
+networks:
+    net:
+        driver: bridge

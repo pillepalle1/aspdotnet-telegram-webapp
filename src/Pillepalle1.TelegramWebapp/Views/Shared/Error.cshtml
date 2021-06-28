@@ -1,0 +1,9 @@
+@if (null == ViewBag.ErrorTitle)
+{
+    <p>An error occured while processing your request</p>
+}
+else 
+{
+    <p>@ViewBag.ErrorTitle</p>
+    <p>@ViewBag.ErrorMessage</p>
+}

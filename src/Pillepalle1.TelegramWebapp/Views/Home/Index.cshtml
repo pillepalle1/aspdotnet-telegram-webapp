@@ -1,0 +1,26 @@
+@model HomeIndexViewmodel;
+
+<h1>Hey there, you are now logged in</h1>
+
+<p>
+    Telegram has provided the following information about you:
+</p>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>@Model.TgNativeId</td>
+    </tr>
+    <tr>
+        <td>First name</td>
+        <td>@Model.FirstName</td>
+    </tr>
+    <tr>
+        <td>Username</td>
+        <td>@Model.UserName</td>
+    </tr>
+    <tr>
+        <td>Photo URL</td>
+        <td>@Model.PhotoUrl</td>
+    </tr>
+</table>

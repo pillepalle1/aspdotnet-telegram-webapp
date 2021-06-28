@@ -1,8 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-      <TargetFramework>net5.0</TargetFramework>
-      <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+      <TargetFramework>net5.0</TargetFramework>                     <!-- Use latest dotnet-core framework -->
+      <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel> <!-- Use Kestrel to handle requests -->
   </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Extensions for ASP.NET Core -->
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.7" />
+
+    <!-- Everything related Telegram Bot API -->
+    <PackageReference Include="Telegram.Bot" Version="16.0.0" />
+    <PackageReference Include="Telegram.Bot.Extensions.LoginWidget" Version="1.2.0" />
+
+    <!-- Everyhing related to EntityFrameworkCore -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />    
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
+  </ItemGroup>
 
 </Project>

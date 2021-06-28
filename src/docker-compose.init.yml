@@ -1,0 +1,15 @@
+version: '2.0'
+
+services:
+
+    certbot:
+        build:
+            context: ./certbot/
+            dockerfile: ./Dockerfile
+        environment:
+            EMAIL: "${EMAIL}" 
+            FQDN: "${FQDN}" 
+        ports:
+            - 80:80
+        volumes:
+            - ./.vol/letsencrypt:/etc/letsencrypt

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @if (IsSectionDefined("css"))
+    {
+        <!-- Style sheets go here (automatically, provided by page) -->
+        @RenderSection("css")
+    }
+    <title>@ViewBag.Title</title>
+</head>
+
+<body>
+    <nav>
+        <!-- Navigation goes here -->
+    </nav>
+
+    <div>
+        <!-- Page content goes here (automatically, provided by page) -->
+        @RenderBody()
+    </div>
+
+    @if (IsSectionDefined("scripts"))
+    {
+        <!-- Scripts go here (automatically, provided by page) -->
+        @RenderSection("scripts")
+    }
+</body>
+
+</html>
