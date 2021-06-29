@@ -19,7 +19,7 @@ It integrates
 Please refer to the 
 [Wiki](https://github.com/pillepalle1/aspdotnet-telegram-webapp/wiki)
 for details on 
-[Template setup](https://github.com/pillepalle1/aspdotnet-telegram-webapp/wiki/Template)
+[Template setup](https://github.com/pillepalle1/aspdotnet-telegram-webapp/wiki/Template),
 [Quickstart](https://github.com/pillepalle1/aspdotnet-telegram-webapp/wiki/Quickstart)
 or general documentation like
 [Architecture](https://github.com/pillepalle1/aspdotnet-telegram-webapp/wiki/Architecture)
