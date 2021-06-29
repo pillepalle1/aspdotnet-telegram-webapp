@@ -1,52 +1,27 @@
-# Telegram Webapp
+# aspdotnet-telegram-webapp
 
-This repository contains a net5.0 template for creating Webapps that feature a
-*Telegram Bot* and *Telegram Based Authentication*. Official documentation can
-be found here:
+This *ASP.NET Core Web Application* template features all
+things Telegram. 
 
-## Telegram Bot API
+## Features
 
-https://core.telegram.org/bots/api
+It integrates
 
-## Telegram User Authentication
+- [Telegram Bot](https://core.telegram.org/bots)
+- [Telegram Login Widget](https://core.telegram.org/widgets/login)
+- [EF Core](https://docs.microsoft.com/en-us/ef/core/) ORM
+- [PostgreSQL](https://www.postgresql.org) storage
+- [Certbot](https://certbot.eff.org) certificate management
+- [Nginx](https://www.nginx.com) reverse proxy
 
-https://core.telegram.org/api/auth
+## Documentation
 
-## Installing the template
-
-`cd` into the src/ directory and issue `dotnet new -i ./`
-
-*Warning:* Do not remove the directory afterwards. You will run into a world of
-pain becuase dotnet-new will keep looking for this template.
-
-Restore the template by issuing `dotnet new <template-directory-name>`
-
-Uninstall the template using `dotnet new -u`
-
----
-
-# Third Party Libraries
-
-This project heavily relies on third party libraries that implement interaction
-with the Telegram servers.
-
-## Telegram.Bot
-
-Implementation of the Telegram Bot API with very helpful community on Telegram.
-
-on Github: https://github.com/TelegramBots/Telegram.Bot
-
-## Telegram.Bot.Extensions.LoginWidget
-
-Implementation of the _Log in with Telegram_ button.
-
-on Github: https://github.com/TelegramBots/Telegram.Bot.Extensions.LoginWidget
-
-## Microsoft.EntityFrameworkCore.*
-
-Well known mapper from dotnet core classes to database schemes.
-
-## Npgsql.EntityFrameworkCore.PostgreSQL
-
-Translates abstractions from Microsoft.EntityFrameworkCore to database
-commands.
+Please refer to the 
+[Wiki](https://github.com/pillepalle1/aspdotnet-telegram-webapp/wiki)
+for details on 
+[Template setup](https://github.com/pillepalle1/aspdotnet-telegram-webapp/wiki/Template)
+[Quickstart](https://github.com/pillepalle1/aspdotnet-telegram-webapp/wiki/Quickstart)
+or general documentation like
+[Architecture](https://github.com/pillepalle1/aspdotnet-telegram-webapp/wiki/Architecture)
+or
+[Third party libraries](https://github.com/pillepalle1/aspdotnet-telegram-webapp/wiki/used-libs)
