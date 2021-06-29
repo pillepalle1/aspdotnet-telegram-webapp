@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,8 +7,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Pillepalle1.TelegramWebapp.Model.Database;
 using Pillepalle1.TelegramWebapp.Model.Identity;
-using Pillepalle1.TelegramWebapp.Model.TelegramBot;
-using Pillepalle1.TelegramWebapp.Services;
+using Pillepalle1.TelegramWebapp.Model.Bot;
+using Pillepalle1.TelegramWebapp.MvcExtensions.Services;
 using Telegram.Bot;
 
 namespace Pillepalle1.TelegramWebapp
@@ -31,7 +26,7 @@ namespace Pillepalle1.TelegramWebapp
         public void ConfigureServices(IServiceCollection services)
         {
             // Configuring Telegram Bot
-            services.AddHostedService<TelegramBotHostedService>();
+            services.AddHostedService<RegisterWebhook>();
             services.AddHttpClient("tgwebhook")
                .AddTypedClient<ITelegramBotClient>(httpClient => new TelegramBotClient(_config["BOT_TOKEN"], httpClient));
             services.AddSingleton<ITelegramBotUpdateHandler, TelegramBotUpdateHandlerImpl>();
@@ -95,20 +90,12 @@ namespace Pillepalle1.TelegramWebapp
                 endpoints.MapControllerRoute(
                     "tgwebhook",
                     $"bot/{token}",
-                    new { controller = "TelegramBotWebhook", Action = "Post" });
+                    new { controller = "Webhook", Action = "Post" });
 
                 // setting up routes for controllers
                 endpoints.MapControllerRoute(
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");
-
-                /*
-                // forward all other requests to here
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-                */
             });
         }
     }

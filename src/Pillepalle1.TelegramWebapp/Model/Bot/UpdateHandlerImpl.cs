@@ -3,7 +3,7 @@ using Telegram.Bot.Types;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot;
 
-namespace Pillepalle1.TelegramWebapp.Model.TelegramBot
+namespace Pillepalle1.TelegramWebapp.Model.Bot
 {
     public class TelegramBotUpdateHandlerImpl : ITelegramBotUpdateHandler
     {

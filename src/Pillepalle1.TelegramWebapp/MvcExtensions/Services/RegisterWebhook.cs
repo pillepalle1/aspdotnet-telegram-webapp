@@ -4,14 +4,14 @@ using Telegram.Bot;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 
-namespace Pillepalle1.TelegramWebapp.Services
+namespace Pillepalle1.TelegramWebapp.MvcExtensions.Services
 {
-    public class TelegramBotHostedService : IHostedService
+    public class RegisterWebhook : IHostedService
     {
         private readonly ITelegramBotClient _botClient;
         private readonly IConfiguration _config;
 
-        public TelegramBotHostedService(IConfiguration config, ITelegramBotClient botClient)
+        public RegisterWebhook(IConfiguration config, ITelegramBotClient botClient)
         {
             _config = config;
             _botClient = botClient;

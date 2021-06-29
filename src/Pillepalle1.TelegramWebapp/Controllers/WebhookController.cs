@@ -2,15 +2,15 @@ using System.Threading.Tasks;
 using Telegram.Bot.Types;
 using Microsoft.AspNetCore.Mvc;
 
-using Pillepalle1.TelegramWebapp.Model.TelegramBot;
+using Pillepalle1.TelegramWebapp.Model.Bot;
 
 namespace Pillepalle1.TelegramWebapp.Controllers
 {
-    public class TelegramBotWebhookController : Controller
+    public class WebhookController : Controller
     {
         private readonly ITelegramBotUpdateHandler _telegramBotService;
 
-        public TelegramBotWebhookController(ITelegramBotUpdateHandler telegramBotService)
+        public WebhookController(ITelegramBotUpdateHandler telegramBotService)
         {
             _telegramBotService = telegramBotService;
         }
